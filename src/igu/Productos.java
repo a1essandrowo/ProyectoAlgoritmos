@@ -250,7 +250,9 @@ public class Productos extends javax.swing.JFrame {
 
     private void cargarCategoriasDesdeArchivo() {
         List<String[]> categorias = ProyectoAlgoritmos.leerCategoriasDelArchivo();
+        int maxId = 0;
         for (String[] categoria : categorias) {
+            int id = Integer.parseInt(categoria[0]);
             model.addRow(new Object[]{categoria[0], categoria[1], categoria[2]});
             idCounter = Math.max(idCounter, Integer.parseInt(categoria[0]) + 1);
         }
@@ -274,8 +276,6 @@ public class Productos extends javax.swing.JFrame {
     }
 
     private void nuevaCategoria() {
-        nombreCategoriatxt.setText(""); // Limpiar campo de nombre
-        descrpCategoriastxt.setText(""); // Limpiar campo de característica
 
     }
 
@@ -305,6 +305,7 @@ public class Productos extends javax.swing.JFrame {
             // Obtener el ID de la columna 0 de la fila seleccionada
             String id = model.getValueAt(selectedRow, 0).toString();
             // Rellenar los campos de texto con los datos de la fila seleccionada
+            idCategoriatxt.setText(id); // Mostrar el ID en el campo de texto
             nombreCategoriatxt.setText(model.getValueAt(selectedRow, 1).toString());
             descrpCategoriastxt.setText(model.getValueAt(selectedRow, 2).toString());
         }
@@ -343,7 +344,7 @@ public class Productos extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarbtnActionPerformed
 
     private void idCategoriatxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCategoriatxtActionPerformed
-        idCategoriatxt.setVisible(false); //el campo de texto no se verá
+        
     }//GEN-LAST:event_idCategoriatxtActionPerformed
 
 
@@ -389,6 +390,6 @@ public class Productos extends javax.swing.JFrame {
     }
 
     private void guardarCategoria() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 }
